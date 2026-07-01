@@ -27,11 +27,15 @@ dev-server.mjs    Run locally without Vercel
 
 ### Engagement Models page (pricing.html)
 An interactive configurator (Step 1–6: engagement type, cargo, modes, annual
-volume, commercial services, geographic scope). It is **configuration-first**: it
-shows the *fee structure* for the chosen engagement (Project Fee / Per-Tonne
-Management Fee / Monthly Retainer / Tailored Commercial Engagement) and a
-**recommended engagement** derived from the selections — **no public price is
-displayed**. The primary action is booking a 30-minute Commercial Review.
+volume, commercial services, geographic scope) for **long-term commercial
+partnerships** — there is no transactional single-shipment option. The three
+models are **Commercial Freight Desk** (recommended, 12-month minimum),
+**Freight Program Management** (12-month minimum) and **Strategic Supply Chain
+Advisory** (project-based). It is **configuration-first**: it shows the *fee
+structure* for the chosen engagement (Monthly Retainer or Hybrid / Per-Tonne
+Management Fee / Fixed-Fee Advisory Project) and a **recommended engagement**
+derived from the selections — **no public price is displayed**. The primary
+action is booking a 30-minute Commercial Review.
 
 The whole `config` object is exposed as `window.pelorusEngagement` so it can later
 be wired to CRM / HubSpot / Stripe / a client portal / automated proposal

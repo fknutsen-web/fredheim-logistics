@@ -53,6 +53,9 @@ a{color:inherit;text-decoration:none}
 
 /* selection cards (step 1) */
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opts.stack{grid-template-columns:1fr}
+.opt .ebadge{position:absolute;top:-10px;left:18px;background:var(--gold);color:#fff;font-family:Figtree;font-weight:700;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:20px}
+.opt p b{color:var(--ink);font-weight:700}
 .opt{border:1.5px solid var(--line);border-radius:12px;padding:18px 18px;cursor:pointer;transition:transform .16s ease,border-color .16s,box-shadow .16s,background .16s;position:relative;background:#fff}
 .opt:hover{border-color:var(--gold-soft);transform:translateY(-2px)}
 .opt.sel{border-color:var(--gold);background:#fdfaf4;box-shadow:0 0 0 3px rgba(177,134,78,.15)}
@@ -131,17 +134,39 @@ a{color:inherit;text-decoration:none}
 .model ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:7px}
 .model li{font-size:12.5px;color:var(--body);padding-left:16px;position:relative;line-height:1.4}
 .model li::before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;border-left:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(-45deg)}
+.model.rec{border-top-width:3px;box-shadow:0 22px 46px -30px rgba(10,36,68,.45)}
+.model .mrec{font-family:Figtree;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.model .mterm{font-family:Figtree;font-weight:700;font-size:12px;color:var(--gold);margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
 
 /* outcomes */
 .outcomes{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:840px;margin:0 auto}
 .outcome{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 18px;font-family:Figtree;font-weight:600;font-size:14.5px;color:var(--ink)}
-.outcome .oc{width:20px;height:20px;color:#fff;background:var(--gold);border-radius:50%;padding:4px;flex:0 0 auto}
+.oc{width:20px;height:20px;color:#fff;background:var(--gold);border-radius:50%;padding:4px;flex:0 0 auto}
 
 /* commercial review steps */
 .review{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto}
 .rstep{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:18px 18px}
 .rstep .rn{font-family:Figtree;font-weight:800;font-size:12px;color:var(--gold);letter-spacing:.1em}
 .rstep h4{font-family:Figtree;font-weight:700;font-size:15px;color:var(--navy);margin-top:6px;line-height:1.25}
+
+/* built for long-term partnerships (navy) */
+.ltp{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.ltp p{font-size:16px;line-height:1.65;color:#c9d6e4}
+.ltp b{color:#fff;font-weight:700}
+
+/* who we're built for */
+.builtfor{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.bf{display:flex;gap:13px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 18px;font-family:Figtree;font-weight:600;font-size:15px;color:var(--ink)}
+
+/* comparison table */
+.cmp{max-width:820px;margin:0 auto;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 20px 44px -32px rgba(10,36,68,.4)}
+.cmp-head{display:grid;grid-template-columns:1fr 1fr}
+.cmp-head .ch{padding:16px 20px;font-family:Figtree;font-weight:800;font-size:14px}
+.cmp-head .trad{color:var(--body);background:var(--sea-1)}
+.cmp-head .pel{color:#fff;background:var(--navy)}
+.cmp-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.cmp-row .cc{padding:14px 20px;font-size:14px;color:var(--body);line-height:1.4}
+.cmp-row .cc.gold{font-family:Figtree;font-weight:700;color:var(--navy);border-left:1px solid var(--line);background:#fdfaf4}
 
 .how{background:linear-gradient(180deg,#0a2444,#0e2a4e);color:#dfe8f2}
 .how .sec-head h2{color:#fff}.how .sec-head .eyebrow{color:var(--gold-soft)}.how .sec-head p{color:#c4d2e2}
@@ -230,12 +255,11 @@ footer a{color:var(--gold-soft)}
 
   <div class="step">
    <div class="step-head"><span class="step-n">STEP 1</span><h2>How would you like to work with Pelorus?</h2></div>
-   <p class="sh">Choose the engagement that fits how you move cargo today. You can evolve it over time.</p>
-   <div class="opts" id="engagement" data-single="1">
-     <div class="opt" data-val="single"><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-ship"/></svg><h4>Voyage Support</h4><p>One-off commercial management for a specific cargo movement, end to end.</p></div>
-     <div class="opt" data-val="recurring"><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-repeat"/></svg><h4>Recurring Freight Programs</h4><p>Ongoing freight management for repeating import, export or domestic cargo flows.</p></div>
-     <div class="opt" data-val="desk"><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-desk"/></svg><h4>Commercial Freight Desk</h4><p>Executive-level outsourced freight management across multiple modes, contracts and partners.</p></div>
-     <div class="opt" data-val="advisory"><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-advisory"/></svg><h4>Strategic Supply Chain Advisory</h4><p>Commercial advisory for trade lanes, terminal strategy, sourcing, procurement and logistics structure.</p></div>
+   <p class="sh">We build long-term commercial partnerships. Choose the engagement that fits how you move cargo.</p>
+   <div class="opts stack" id="engagement" data-single="1">
+     <div class="opt" data-val="desk"><span class="ebadge">Recommended</span><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-desk"/></svg><h4>Commercial Freight Desk</h4><p>We embed as an extension of your commercial organisation — freight procurement, chartering, COA management, terminal &amp; carrier negotiations, budget support and commercial oversight. <b>12-month minimum.</b></p></div>
+     <div class="opt" data-val="program"><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-repeat"/></svg><h4>Freight Program Management</h4><p>Ongoing management of recurring import, export or industrial cargo programmes and long-term freight procurement — for teams not yet needing a fully embedded desk. <b>12-month minimum.</b></p></div>
+     <div class="opt" data-val="advisory"><span class="tick"><svg><use href="#i-check"/></svg></span><svg class="oi"><use href="#i-advisory"/></svg><h4>Strategic Supply Chain Advisory</h4><p>Project-based consulting — terminal developments, supply-chain redesign, trade-lane and procurement strategy, commercial due diligence and benchmarking. <b>Defined scope and duration.</b></p></div>
    </div>
   </div>
 
@@ -341,14 +365,65 @@ footer a{color:var(--gold-soft)}
  <div class="wrap">
   <div class="sec-head">
     <span class="eyebrow">Ways to engage</span>
-    <h2>Four ways to access an independent commercial freight desk.</h2>
-    <p>The commercial discipline is the same at every level. What changes is how deeply Pelorus is embedded in your organisation.</p>
+    <h2>Three ways to work with us — all built to last.</h2>
+    <p>We embed with cargo owners as an extension of their commercial organisation. Commercial Freight Desk and Freight Program Management engagements typically begin with a minimum 12-month commitment.</p>
   </div>
-  <div class="models">
-    <div class="model"><svg class="mi"><use href="#i-ship"/></svg><h3>Voyage Support</h3><p>One-off commercial management for a specific cargo movement, end to end.</p></div>
-    <div class="model"><svg class="mi"><use href="#i-repeat"/></svg><h3>Recurring Freight Programs</h3><p>Ongoing freight management for repeating import, export or domestic cargo flows.</p></div>
-    <div class="model"><svg class="mi"><use href="#i-desk"/></svg><h3>Commercial Freight Desk</h3><p>Executive-level outsourced freight management across multiple modes, contracts and partners.</p></div>
-    <div class="model"><svg class="mi"><use href="#i-advisory"/></svg><h3>Strategic Supply Chain Advisory</h3><p>Commercial advisory for trade lanes, terminal strategy, sourcing, procurement and logistics structure.</p></div>
+  <div class="models" style="grid-template-columns:repeat(3,1fr)">
+    <div class="model rec"><div class="mrec">Recommended engagement</div><svg class="mi"><use href="#i-desk"/></svg><h3>Commercial Freight Desk</h3><p>Pelorus becomes an extension of your commercial organisation.</p><ul><li>Freight procurement</li><li>Chartering</li><li>COA management</li><li>Terminal negotiations</li><li>Carrier management</li><li>Performance reporting</li><li>Freight strategy</li><li>Budget support</li><li>Commercial oversight</li></ul><p class="mterm">Typically a 12-month minimum.</p></div>
+    <div class="model"><svg class="mi"><use href="#i-repeat"/></svg><h3>Freight Program Management</h3><p>For companies moving recurring cargo but not requiring a fully embedded desk.</p><ul><li>Import programmes</li><li>Export programmes</li><li>Recurring industrial cargo</li><li>Long-term freight procurement</li></ul><p class="mterm">Typically a 12-month minimum.</p></div>
+    <div class="model"><svg class="mi"><use href="#i-advisory"/></svg><h3>Strategic Supply Chain Advisory</h3><p>Project-based consulting — not freight execution.</p><ul><li>Terminal developments</li><li>Supply chain redesign</li><li>Trade lane strategy</li><li>Procurement strategy</li><li>Commercial due diligence</li><li>Infrastructure projects</li><li>Freight benchmarking</li></ul><p class="mterm">Defined scope and duration.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- BUILT FOR LONG-TERM PARTNERSHIPS -->
+<section class="sec how">
+ <div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">Why we work differently</span>
+    <h2>Built for long-term partnerships.</h2>
+  </div>
+  <div class="ltp">
+    <p>Meaningful supply chain improvements are not achieved through isolated freight transactions.</p>
+    <p>Pelorus is designed around <b>long-term commercial partnerships</b>. Rather than competing for individual shipments, we become an extension of our clients' commercial organisations — providing ongoing freight procurement, contract management, market intelligence and strategic oversight.</p>
+    <p>Our objective is to continuously improve transportation performance, reduce commercial risk and protect supply chain margin over time.</p>
+    <p>For this reason, our Commercial Freight Desk and Freight Program Management engagements typically begin with a <b>minimum 12-month commitment</b>.</p>
+  </div>
+ </div>
+</section>
+
+<!-- WHO WE ARE BUILT FOR -->
+<section class="sec">
+ <div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">Who we're built for</span>
+    <h2>Pelorus is built for companies that…</h2>
+  </div>
+  <div class="builtfor">
+    <div class="bf"><svg class="oc"><use href="#i-check"/></svg>Move industrial cargo on a recurring basis</div>
+    <div class="bf"><svg class="oc"><use href="#i-check"/></svg>Want executive-level freight expertise without building an internal department</div>
+    <div class="bf"><svg class="oc"><use href="#i-check"/></svg>Need independent commercial representation</div>
+    <div class="bf"><svg class="oc"><use href="#i-check"/></svg>Value long-term optimisation over transactional buying</div>
+    <div class="bf"><svg class="oc"><use href="#i-check"/></svg>View freight as a strategic component of their supply chain</div>
+  </div>
+ </div>
+</section>
+
+<!-- THE DIFFERENCE (WE ARE NOT) -->
+<section class="sec" style="background:linear-gradient(180deg,#fff,var(--sea-1))">
+ <div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">The difference</span>
+    <h2>A different kind of freight relationship.</h2>
+    <p>Pelorus is not a freight brokerage. The distinction is in the model.</p>
+  </div>
+  <div class="cmp">
+    <div class="cmp-head"><div class="ch trad">Traditional Freight Brokerage</div><div class="ch pel">Pelorus Shipping</div></div>
+    <div class="cmp-row"><div class="cc">Transaction-based</div><div class="cc gold">Long-term partnership</div></div>
+    <div class="cmp-row"><div class="cc">Paid on freight movements</div><div class="cc gold">Paid to improve commercial performance</div></div>
+    <div class="cmp-row"><div class="cc">Represents freight capacity</div><div class="cc gold">Represents cargo owners</div></div>
+    <div class="cmp-row"><div class="cc">Focuses on individual shipments</div><div class="cc gold">Manages freight programmes</div></div>
+    <div class="cmp-row"><div class="cc">Success measured per shipment</div><div class="cc gold">Success measured over years</div></div>
   </div>
  </div>
 </section>
@@ -409,7 +484,7 @@ footer a{color:var(--gold-soft)}
     <div class="prin"><div class="pn">03</div><h4>No asset bias</h4><p>We own no vessels, terminals or warehouses, so no recommendation is ever driven by filling our own capacity.</p></div>
     <div class="prin"><div class="pn">04</div><h4>Transparent alignment</h4><p>One interest only — yours. Every decision is measured against commercial performance, not utilisation.</p></div>
     <div class="prin"><div class="pn">05</div><h4>Best execution</h4><p>We coordinate the strongest execution partners in the market rather than selling you our own.</p></div>
-    <div class="prin"><div class="pn">06</div><h4>One point of responsibility</h4><p>From a single voyage to a full COA programme, one desk owns the commercial outcome end to end.</p></div>
+    <div class="prin"><div class="pn">06</div><h4>One point of responsibility</h4><p>Across every programme, contract and mode, one desk owns the commercial outcome over the life of the relationship.</p></div>
   </div>
  </div>
 </section>
@@ -456,12 +531,12 @@ var VOLS=[
   {key:'1-5m',    label:'1 – 5 million MT'},
   {key:'5m+',     label:'5 million+ MT'}
 ];
-var ENG_LABELS={single:'Voyage Support',recurring:'Recurring Freight Programs',desk:'Commercial Freight Desk',advisory:'Strategic Supply Chain Advisory'};
+var ENG_LABELS={desk:'Commercial Freight Desk',program:'Freight Program Management',advisory:'Strategic Supply Chain Advisory'};
 var GEO_LABELS={domestic:'Domestic','north-america':'North America',international:'International',worldwide:'Worldwide'};
-/* Fee-structure headline per chosen engagement (no figure shown — configuration first) */
-var FEE_LABELS={single:'Estimated Project Fee',recurring:'Estimated Per-Tonne Management Fee',desk:'Estimated Monthly Retainer',advisory:'Tailored Commercial Engagement'};
-/* Recommendation resolves to one of these three commercial engagements */
-var REC_LABELS={single:'Voyage Support',desk:'Commercial Freight Desk',advisory:'Strategic Supply Chain Advisory'};
+/* Fee structure per engagement (no figure shown — configuration & partnership first) */
+var FEE_LABELS={desk:'Monthly Retainer or Hybrid Agreement',program:'Per-Tonne Management Fee',advisory:'Fixed-Fee Advisory Project'};
+/* Recommendation resolves to one of the three commercial partnership models */
+var REC_LABELS={desk:'Commercial Freight Desk',program:'Freight Program Management',advisory:'Strategic Supply Chain Advisory'};
 
 /* nothing pre-selected — the panel stays empty until the visitor configures */
 var config={engagement:null,cargo:[],modes:[],volume:'100-500k',services:[],geo:null};
@@ -524,25 +599,27 @@ function renderSummary(){
 /* ---- recommended engagement + fee structure (no hard-coded pricing) ---- */
 function onChange(){renderSummary();renderEstimate();}
 
-/* Recommend an engagement from the full set of selections.
-   Voyage Support  ← one-off / low volume / few modes
-   Commercial Freight Desk ← recurring, higher volume, COA, multiple modes
-   Strategic Supply Chain Advisory ← terminal, market intel, strategy, project work */
+/* Recommend one of the three commercial partnership models from the selections.
+   Commercial Freight Desk ← embedded: high volume, multiple modes, COA, oversight
+   Freight Program Management ← recurring but lighter, fewer modes/services
+   Strategic Supply Chain Advisory ← strategy / terminal / market / project work */
 function recommend(){
   var s=config.services,m=config.modes,c=config.cargo;
   var volIdx=VOLS.findIndex(function(v){return v.key===config.volume});
-  var score={single:0,desk:0,advisory:0};
-  if(config.engagement==='single')score.single+=2;
-  if(config.engagement==='recurring'||config.engagement==='desk')score.desk+=2;
+  var score={desk:0.5,program:0,advisory:0};  // slight lean to the flagship desk when ambiguous
+  if(config.engagement==='desk')score.desk+=2;
+  if(config.engagement==='program')score.program+=2;
   if(config.engagement==='advisory')score.advisory+=2;
-  if(volIdx>=3)score.desk+=2; else if(volIdx<=1)score.single+=1;
-  if(m.length>=3)score.desk+=2; else if(m.length<=1)score.single+=1;
-  if(s.indexOf('coa')>=0)score.desk+=2;
+  if(volIdx>=3)score.desk+=2; else if(volIdx<=1)score.program+=1;
+  if(m.length>=3)score.desk+=2; else if(m.length<=2)score.program+=1;
+  if(s.indexOf('coa')>=0)score.desk+=1.5;
+  if(s.indexOf('representation')>=0)score.desk+=1.5;
   if(s.length>=6)score.desk+=1;
   ['terminal-neg','market','optimization','project-plan'].forEach(function(k){if(s.indexOf(k)>=0)score.advisory+=1.5;});
+  if(s.indexOf('benchmark')>=0)score.advisory+=0.75;
   if(c.indexOf('project')>=0)score.advisory+=1.5;
   var best='desk',bv=-1;
-  ['single','desk','advisory'].forEach(function(k){if(score[k]>bv){bv=score[k];best=k;}});
+  ['desk','program','advisory'].forEach(function(k){if(score[k]>bv){bv=score[k];best=k;}});
   return best;
 }
 function renderEstimate(){
